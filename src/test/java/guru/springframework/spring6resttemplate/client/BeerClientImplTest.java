@@ -12,6 +12,7 @@ class BeerClientImplTest {
 
     @Test
     void listBeers() {
+
         beerClient.listBeers();
 
     }
