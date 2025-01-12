@@ -9,20 +9,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class BeerClientImpl implements BeerClient {
 
     private final RestTemplateBuilder restTemplateBuilder;
-    private final String GET_BEER_PATH = "/api/v1/beer";
+
+    private static final String GET_BEER_PATH = "/api/v1/beer";
 
     @Override
     public Page<BeerDTO> listBeers() {
         RestTemplate restTemplate = restTemplateBuilder.build();
 
-        ResponseEntity<BeerDTOPageImpl> stringResponse =
-                restTemplate.getForEntity(GET_BEER_PATH, BeerDTOPageImpl.class);
+        ResponseEntity<BeerDTOPageImpl> response =
+                restTemplate.getForEntity(GET_BEER_PATH , BeerDTOPageImpl.class);
 
-        return null;
+
+        return response.getBody();
     }
 }
