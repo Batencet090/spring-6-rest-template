@@ -14,15 +14,14 @@ public class RestTemplateBuilderConfig {
     String rootUrl;
 
     @Bean
-    RestTemplateBuilder restTemplateBuilder(RestTemplateBuilderConfigurer configurer) {
+    RestTemplateBuilder restTemplateBuilder(RestTemplateBuilderConfigurer configurer){
 
-        assert rootUrl!= null;
+        assert rootUrl != null;
 
         RestTemplateBuilder builder = configurer.configure(new RestTemplateBuilder());
         DefaultUriBuilderFactory uriBuilderFactory = new
                 DefaultUriBuilderFactory(rootUrl);
 
         return builder.uriTemplateHandler(uriBuilderFactory);
-
     }
 }
